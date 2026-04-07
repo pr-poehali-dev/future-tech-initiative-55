@@ -3,23 +3,23 @@ import { HighlightedText } from "./HighlightedText"
 
 const philosophyItems = [
   {
-    title: "Минимализм со смыслом",
+    title: "Технологии для комфорта",
     description:
-      "Каждый элемент имеет свое назначение и пространство для дыхания. Мы убираем лишнее, чтобы раскрыть то, что действительно важно.",
+      "Умный унитаз — это не роскошь, а следующий шаг в эволюции жилья. Мы верим, что каждый заслуживает санузла, который работает на вас.",
   },
   {
-    title: "Архитектурный подход",
+    title: "Гигиена нового уровня",
     description:
-      "Планировки, вдохновленные структурой, ритмом и материальностью. Здания, которые говорят через пропорции и свет.",
+      "Биде с подогревом воды, автоматическая крышка, УФ-стерилизация — не просто удобство, а настоящая забота о здоровье всей семьи.",
   },
   {
-    title: "Естественная динамика",
+    title: "Простота управления",
     description:
-      "Движение поддерживает восприятие, но никогда не отвлекает. Анимация, которая ощущается естественно, как свет, скользящий по комнате.",
+      "Интуитивный пульт или управление со смартфона. Персональные настройки для каждого члена семьи — с первого дня использования.",
   },
   {
-    title: "Вневременная эстетика",
-    description: "Элегантный, спокойный и долговечный визуальный язык. Дизайн, который превосходит тренды и стареет с достоинством.",
+    title: "Интеграция в интерьер",
+    description: "Лаконичный дизайн вписывается в любой стиль ванной комнаты — от скандинавского минимализма до современной классики.",
   },
 ]
 
@@ -55,15 +55,15 @@ export function Philosophy() {
           <div className="lg:sticky lg:top-32 lg:self-start">
             <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Наша философия</p>
             <h2 className="text-6xl md:text-6xl font-medium leading-[1.15] tracking-tight mb-6 text-balance lg:text-8xl">
-              Дизайн с
+              Комфорт с
               <br />
-              <HighlightedText>намерением</HighlightedText>
+              <HighlightedText>умом</HighlightedText>
             </h2>
 
             <div className="relative hidden lg:block">
               <img
-                src="/images/exterior.png"
-                alt="Архитектурный эскиз рабочего пространства"
+                src="https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/4b85cef9-1333-473f-bdd2-71657989733b.jpg"
+                alt="Панель управления умным унитазом"
                 className="opacity-90 relative z-10 w-auto"
               />
             </div>
@@ -72,7 +72,7 @@ export function Philosophy() {
           {/* Right column - Description and Philosophy items */}
           <div className="space-y-6 lg:pt-48">
             <p className="text-muted-foreground text-lg leading-relaxed max-w-md mb-12">
-              Архитектура - это больше, чем конструкция. Это то, как мы воспринимаем мир. Мы создаем пространства, которые питают человеческий дух.
+              Умный унитаз — это больше, чем сантехника. Это часть продуманного современного дома, где каждая деталь работает на ваш комфорт и здоровье.
             </p>
 
             {philosophyItems.map((item, index) => (

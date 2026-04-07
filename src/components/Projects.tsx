@@ -4,35 +4,35 @@ import { ArrowUpRight } from "lucide-react"
 const projects = [
   {
     id: 1,
-    title: "Резиденция Светлая",
-    category: "Жилой дом",
-    location: "Москва, Россия",
-    year: "2024",
-    image: "/images/hously-1.png",
+    title: "AquaVita Pro",
+    category: "Флагманская модель",
+    location: "Биде · Подогрев · Стерилизация",
+    year: "Хит",
+    image: "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/02bef87b-90ea-435a-83b0-3dc754189a9b.jpg",
   },
   {
     id: 2,
-    title: "Павильон Стекло",
-    category: "Коммерческий объект",
-    location: "Санкт-Петербург, Россия",
-    year: "2023",
-    image: "/images/hously-2.png",
+    title: "SmartSpa Elite",
+    category: "Премиум серия",
+    location: "Аэромассаж · Ароматизация · Музыка",
+    year: "Новинка",
+    image: "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/3efb5251-01fc-41f3-bdb8-e0e3b950cc49.jpg",
   },
   {
     id: 3,
-    title: "Дом у моря",
-    category: "Жилой дом",
-    location: "Сочи, Россия",
-    year: "2023",
-    image: "/images/hously-3.png",
+    title: "EcoSmart Compact",
+    category: "Базовая серия",
+    location: "Биде · Подогрев · Экономия воды",
+    year: "Старт",
+    image: "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/9acc0a57-c72f-4da4-8624-a0df6991bfb2.jpg",
   },
   {
     id: 4,
-    title: "Северный приют",
-    category: "Гостиничный комплекс",
-    location: "Казань, Россия",
-    year: "2024",
-    image: "/images/hously-4.png",
+    title: "TechPanel Control",
+    category: "Аксессуар",
+    location: "Пульт · Приложение · Голос",
+    year: "2025",
+    image: "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/4b85cef9-1333-473f-bdd2-71657989733b.jpg",
   },
 ]
 
@@ -68,14 +68,14 @@ export function Projects() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
-            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Избранные работы</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight">Наши проекты</h2>
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Наши модели</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight">Линейка продуктов</h2>
           </div>
           <a
-            href="#"
+            href="#contact"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
           >
-            Смотреть все проекты
+            Узнать цены
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>

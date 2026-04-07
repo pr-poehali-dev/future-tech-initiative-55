@@ -4,11 +4,14 @@ import { ArrowUpRight } from "lucide-react"
 const projects = [
   {
     id: 1,
-    title: "AquaVita Pro",
+    title: "Мейшида 611",
     category: "Флагманская модель",
     location: "Биде · Подогрев · Стерилизация",
     year: "Хит",
-    image: "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/02bef87b-90ea-435a-83b0-3dc754189a9b.jpg",
+    images: [
+      "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/bucket/90015c03-0f60-4086-8bf6-15ff66f6331e.png",
+      "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/bucket/37bed4c8-7061-400f-b1fc-328481b782ef.jpg",
+    ],
   },
   {
     id: 2,
@@ -16,7 +19,9 @@ const projects = [
     category: "Премиум серия",
     location: "Аэромассаж · Ароматизация · Музыка",
     year: "Новинка",
-    image: "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/3efb5251-01fc-41f3-bdb8-e0e3b950cc49.jpg",
+    images: [
+      "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/3efb5251-01fc-41f3-bdb8-e0e3b950cc49.jpg",
+    ],
   },
   {
     id: 3,
@@ -24,7 +29,9 @@ const projects = [
     category: "Базовая серия",
     location: "Биде · Подогрев · Экономия воды",
     year: "Старт",
-    image: "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/9acc0a57-c72f-4da4-8624-a0df6991bfb2.jpg",
+    images: [
+      "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/9acc0a57-c72f-4da4-8624-a0df6991bfb2.jpg",
+    ],
   },
   {
     id: 4,
@@ -32,12 +39,92 @@ const projects = [
     category: "Аксессуар",
     location: "Пульт · Приложение · Голос",
     year: "2025",
-    image: "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/4b85cef9-1333-473f-bdd2-71657989733b.jpg",
+    images: [
+      "https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/4b85cef9-1333-473f-bdd2-71657989733b.jpg",
+    ],
   },
 ]
 
+function ProjectCard({ project, index, revealedImages, imageRefs }: {
+  project: typeof projects[0]
+  index: number
+  revealedImages: Set<number>
+  imageRefs: React.MutableRefObject<(HTMLDivElement | null)[]>
+}) {
+  const [activeImage, setActiveImage] = useState(0)
+  const hasMultiple = project.images.length > 1
+
+  return (
+    <article className="group cursor-pointer">
+      <div
+        ref={(el) => (imageRefs.current[index] = el)}
+        className="relative overflow-hidden aspect-[4/3] mb-6"
+      >
+        {project.images.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt={`${project.title} — фото ${i + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
+              activeImage === i ? "opacity-100 scale-100" : "opacity-0 scale-105"
+            }`}
+          />
+        ))}
+
+        <div
+          className="absolute inset-0 bg-primary origin-top pointer-events-none"
+          style={{
+            transform: revealedImages.has(project.id) ? "scaleY(0)" : "scaleY(1)",
+            transition: "transform 1.5s cubic-bezier(0.76, 0, 0.24, 1)",
+          }}
+        />
+
+        {hasMultiple && (
+          <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-10">
+            {project.images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveImage(i)}
+                className={`w-6 h-1.5 rounded-full transition-all duration-300 ${
+                  activeImage === i ? "bg-white" : "bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
+        )}
+
+        {hasMultiple && (
+          <>
+            <button
+              onClick={() => setActiveImage((prev) => (prev - 1 + project.images.length) % project.images.length)}
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/30 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              ‹
+            </button>
+            <button
+              onClick={() => setActiveImage((prev) => (prev + 1) % project.images.length)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/30 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              ›
+            </button>
+          </>
+        )}
+      </div>
+
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h3 className="text-xl font-medium mb-2 group-hover:underline underline-offset-4">{project.title}</h3>
+          <p className="text-muted-foreground text-sm">
+            {project.category} · {project.location}
+          </p>
+        </div>
+        <span className="text-muted-foreground/60 text-sm">{project.year}</span>
+      </div>
+    </article>
+  )
+}
+
 export function Projects() {
-  const [hoveredId, setHoveredId] = useState<number | null>(null)
   const [revealedImages, setRevealedImages] = useState<Set<number>>(new Set())
   const imageRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -82,39 +169,13 @@ export function Projects() {
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {projects.map((project, index) => (
-            <article
+            <ProjectCard
               key={project.id}
-              className="group cursor-pointer"
-              onMouseEnter={() => setHoveredId(project.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              <div ref={(el) => (imageRefs.current[index] = el)} className="relative overflow-hidden aspect-[4/3] mb-6">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className={`w-full h-full object-cover transition-transform duration-700 ${
-                    hoveredId === project.id ? "scale-105" : "scale-100"
-                  }`}
-                />
-                <div
-                  className="absolute inset-0 bg-primary origin-top"
-                  style={{
-                    transform: revealedImages.has(project.id) ? "scaleY(0)" : "scaleY(1)",
-                    transition: "transform 1.5s cubic-bezier(0.76, 0, 0.24, 1)",
-                  }}
-                />
-              </div>
-
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-xl font-medium mb-2 group-hover:underline underline-offset-4">{project.title}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {project.category} · {project.location}
-                  </p>
-                </div>
-                <span className="text-muted-foreground/60 text-sm">{project.year}</span>
-              </div>
-            </article>
+              project={project}
+              index={index}
+              revealedImages={revealedImages}
+              imageRefs={imageRefs}
+            />
           ))}
         </div>
       </div>

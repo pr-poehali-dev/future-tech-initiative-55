@@ -62,8 +62,8 @@ export function Philosophy() {
 
             <div className="relative hidden lg:block">
               <img
-                src="https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/files/4b85cef9-1333-473f-bdd2-71657989733b.jpg"
-                alt="Панель управления умным унитазом"
+                src="https://cdn.poehali.dev/projects/eb1e733a-fb65-4aca-b4c3-d2e5d5a1f4e8/bucket/81b1bee2-54a6-4acd-b68b-20393119f73f.jpg"
+                alt="Мейшида 611 — умный унитаз с датчиком присутствия"
                 className="opacity-90 relative z-10 w-auto"
               />
             </div>
